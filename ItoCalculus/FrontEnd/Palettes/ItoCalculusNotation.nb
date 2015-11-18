@@ -1,0 +1,109 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      3206,        100]
+NotebookOptionsPosition[      2958,         87]
+NotebookOutlinePosition[      3295,        102]
+CellTagsIndexPosition[      3252,         99]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"BeginPackage", "[", "\"\<ItoCalculus`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ItoDifferential", ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"QuantumItoDifferential", ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Notation`AutoLoadNotationPalette", "=", "False"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Notation`AutoUpdateNotationStyleSheet", "=", "False"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<Notation`\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Notation", "[", 
+   RowBox[{
+    TagBox[
+     RowBox[{
+      RowBox[{"a_", "\[CenterDot]", "dt"}], " ", "+", " ", 
+      RowBox[{"b_", "\[CenterDot]", 
+       SubscriptBox["dW", "t"]}]}],
+     "NotationTemplateTag"], " ", "\[DoubleLongLeftRightArrow]", " ", 
+    TagBox[
+     RowBox[{"ItoDifferential", "[", 
+      RowBox[{"a_", ",", "b_"}], "]"}],
+     "NotationTemplateTag"]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Notation", "[", 
+   RowBox[{
+    TagBox[
+     RowBox[{
+      RowBox[{"a_", "\[CenterDot]", "dt"}], " ", "+", " ", 
+      RowBox[{"b_", "\[CenterDot]", 
+       SubscriptBox["dA", "t"]}], "+", " ", 
+      RowBox[{"c_", "\[CenterDot]", 
+       SubscriptBox[
+        SuperscriptBox["dA", "\[Dagger]"], "t"]}], "+", " ", 
+      RowBox[{"d_", "\[CenterDot]", 
+       SubscriptBox["d\[CapitalLambda]", "t"]}]}],
+     "NotationTemplateTag"], " ", "\[DoubleLongLeftRightArrow]", " ", 
+    TagBox[
+     RowBox[{"QuantumItoDifferential", "[", 
+      RowBox[{"a_", ",", "b_", ",", "c_", ",", "d_"}], "]"}],
+     "NotationTemplateTag"]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"End", "[", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"EndPackage", "[", "]"}], ";"}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{
+  "NotebookClose", "[", "QuantumOperator`Private`notationNotebook", "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.429278998863204*^9, 3.4292790844972878`*^9}, {
+  3.437662240477459*^9, 3.437662293153287*^9}, {3.437662428175538*^9, 
+  3.437662432660499*^9}, {3.437662500864546*^9, 3.4376625049991827`*^9}, {
+  3.4376629178063726`*^9, 3.437662975782875*^9}}]
+},
+WindowSize->{640, 652},
+WindowMargins->{{215, Automatic}, {4, Automatic}},
+FrontEndVersion->"6.0 for Mac OS X x86 (32-bit) (April 20, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 2386, 64, 279, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,168 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      5867,        159]
+NotebookOptionsPosition[      3278,        101]
+NotebookOutlinePosition[      5956,        161]
+CellTagsIndexPosition[      5913,        158]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"BeginPackage", "[", "\"\<QuantumOperator`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"QuantumOperator", ";"}], "\[IndentingNewLine]", 
+ RowBox[{"QuantumTensor", ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"QuantumConditionalExpectation", ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Notation`AutoLoadNotationPalette", "=", "False"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<Notation`\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Notation", "[", 
+   RowBox[{
+    TagBox[
+     OverscriptBox["h_", "\[Wedge]"],
+     "NotationTemplateTag"], " ", "\[DoubleLongLeftRightArrow]", " ", 
+    TagBox[
+     RowBox[{"QuantumOperator", "[", "h_", "]"}],
+     "NotationTemplateTag"]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AddInputAlias", "[", 
+   RowBox[{
+    RowBox[{"\"\<op\>\"", "\[Rule]", 
+     TagBox[
+      OverscriptBox["\[Placeholder]", "\[Wedge]"],
+      "NotationTemplateTag"]}], ",", "targetNotebook"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Notation", "[", 
+   RowBox[{
+    TagBox[
+     RowBox[{"\[Pi]", "[", "a_", "]"}],
+     "NotationTemplateTag"], " ", "\[DoubleLongLeftRightArrow]", " ", 
+    TagBox[
+     RowBox[{"QuantumConditionalExpectation", "[", "a_", "]"}],
+     "NotationTemplateTag"]}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"AddInputAlias", "[", 
+   RowBox[{
+    RowBox[{"\"\<qce\>\"", "\[Rule]", 
+     TagBox[
+      RowBox[{"\[Pi]", "[", "\[Placeholder]", "]"}],
+      "NotationTemplateTag"]}], ",", "targetNotebook"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"InfixNotation", "[", 
+   RowBox[{
+    TemplateBox[{"\[CircleTimes]"},
+     "NotationTemplateTag"], ",", "QuantumTensor"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"AddInputAlias", "[", 
+   RowBox[{
+    RowBox[{"\"\<qt\>\"", "\[Rule]", 
+     TagBox["\[CircleTimes]",
+      "NotationTemplateTag"]}], ",", "targetNotebook"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Notation`AutoLoadNotationPalette", "=", "True"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Notation`AutoUpdateNotationStyleSheet", "=", "True"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"End", "[", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"EndPackage", "[", "]"}], ";"}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{
+  "NotebookClose", "[", "QuantumOperator`Private`notationNotebook", "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.508359400689424*^9, 3.508359403791629*^9}, {
+  3.508359437838318*^9, 3.508359439330247*^9}}]
+},
+WindowSize->{640, 652},
+WindowMargins->{{Automatic, 505}, {131, Automatic}},
+InputAliases->{"intt" -> RowBox[{"\[Integral]", 
+     RowBox[{"\[SelectionPlaceholder]", 
+       RowBox[{"\[DifferentialD]", "\[Placeholder]"}]}]}], "dintt" -> 
+  RowBox[{
+     SubsuperscriptBox[
+     "\[Integral]", "\[SelectionPlaceholder]", "\[Placeholder]"], 
+     RowBox[{"\[Placeholder]", 
+       RowBox[{"\[DifferentialD]", "\[Placeholder]"}]}]}], "sumt" -> RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"\[SelectionPlaceholder]", "=", "\[Placeholder]"}], 
+      "\[Placeholder]"], "\[Placeholder]"}], "prodt" -> RowBox[{
+     UnderoverscriptBox["\[Product]", 
+      RowBox[{"\[SelectionPlaceholder]", "=", "\[Placeholder]"}], 
+      "\[Placeholder]"], "\[Placeholder]"}], "dt" -> RowBox[{
+     SubscriptBox["\[PartialD]", "\[Placeholder]"], " ", 
+     "\[SelectionPlaceholder]"}], 
+  "\!\(\*OverscriptBox[\(\[Placeholder]\), \(\[Wedge]\)]\)" -> "op", 
+  "notation" -> RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongLeftRightArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "notation>" -> 
+  RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongRightArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "notation<" -> 
+  RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongLeftArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "symb" -> 
+  RowBox[{"Symbolize", "[", 
+     TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], "]"}], 
+  "infixnotation" -> RowBox[{"InfixNotation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], ",", 
+       "\[Placeholder]"}], "]"}], "addia" -> RowBox[{"AddInputAlias", "[", 
+     RowBox[{"\"\[SelectionPlaceholder]\"", "\[Rule]", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "pattwraper" -> 
+  TagBox["\[SelectionPlaceholder]", "NotationPatternTag"], "madeboxeswraper" -> 
+  TagBox["\[SelectionPlaceholder]", "NotationMadeBoxesTag"], "op" -> 
+  OverscriptBox["\[Placeholder]", "\[Wedge]"], "qce" -> 
+  RowBox[{"\[Pi]", "[", "\[Placeholder]", "]"}], "qt" -> "\[CircleTimes]"},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 6, \
+2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 2729, 79, 383, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

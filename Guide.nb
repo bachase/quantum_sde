@@ -1,0 +1,1993 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     62814,       1984]
+NotebookOptionsPosition[     53273,       1696]
+NotebookOutlinePosition[     56335,       1768]
+CellTagsIndexPosition[     56165,       1761]
+WindowFrame->Normal
+ContainsDynamic->True *)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Guide to QuantumOperator and ItoCalculus Packages", "Section",
+ CellChangeTimes->{{3.454681643858058*^9, 3.4546816524505873`*^9}}],
+
+Cell[TextData[{
+ StyleBox["This ",
+  FontSize->14],
+ StyleBox["Mathematica",
+  FontSize->14,
+  FontSlant->"Italic"],
+ StyleBox[" worksheet is meant as a guide to the QuantumOperator and \
+ItoCalculus packages and contains examples of their use.  ",
+  FontSize->14]
+}], "Text",
+ CellChangeTimes->{{3.4546816586096287`*^9, 3.454681714373836*^9}, {
+  3.454757362131955*^9, 3.4547573625357447`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Installation", "Subsubsection",
+ CellChangeTimes->{{3.454682557150478*^9, 3.454682558509248*^9}}],
+
+Cell[TextData[{
+ StyleBox["The first step to using either package is to ensure the files are \
+in a location known to ", "Text",
+  FontSize->14],
+ StyleBox["Mathematica", "Text",
+  FontSize->14,
+  FontSlant->"Italic"],
+ StyleBox[".  In OS X, this is the user's application directory, which is", 
+  "Text",
+  FontSize->14]
+}], "Text",
+ CellChangeTimes->{{3.454682516290468*^9, 3.454682575637858*^9}, {
+  3.454683791932741*^9, 3.45468379340827*^9}, {3.45475737090098*^9, 
+  3.4547573711284733`*^9}}],
+
+Cell[BoxData[
+ StyleBox[
+  "\!\(\*\"\\\"\"\)\!\(\*\"~\"\)\!\(\*\"/\"\)\!\(\*\"Library\"\)\!\(\*\"/\"\)\
+\!\(\*\"Mathematica\"\)\!\(\*\"/\"\)\!\(\*\"Applications\"\)\!\(\*\"/\"\)\!\(\
+\*\"\\\"\"\)", "Code"]], "Input",
+ CellChangeTimes->{{3.4546818296960297`*^9, 3.45468184618958*^9}, {
+   3.4546819247801332`*^9, 3.4546819249616833`*^9}, {3.4546823555992813`*^9, 
+   3.4546823851793127`*^9}, 3.454682493016204*^9, {3.454683770579805*^9, 
+   3.4546837735848503`*^9}, {3.4547573777814903`*^9, 3.454757380859138*^9}},
+ EmphasizeSyntaxErrors->True],
+
+Cell[TextData[{
+ StyleBox["where the tilde represents the user's home directory.  Place the \
+ItoCalculus or QuantumOperator folders within this applications folder to \
+have them accesible by ",
+  FontSize->14],
+ StyleBox["Mathematica",
+  FontSize->14,
+  FontSlant->"Italic"],
+ StyleBox[". ",
+  FontSize->14]
+}], "Text",
+ CellChangeTimes->{{3.454682495635393*^9, 3.454682496476321*^9}, {
+  3.4546825660414057`*^9, 3.4546826120002403`*^9}, {3.454682652343959*^9, 
+  3.454682653011078*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Loading Packages", "Subsubsection",
+ CellChangeTimes->{{3.454682658018425*^9, 3.454682663867285*^9}}],
+
+Cell[TextData[{
+ StyleBox["To load either package, execute the following commands at the \
+beginning of your ",
+  FontSize->14],
+ StyleBox["Mathematica",
+  FontSize->14,
+  FontSlant->"Italic"],
+ StyleBox[" worksheet",
+  FontSize->14]
+}], "Text",
+ CellChangeTimes->{{3.454682673123358*^9, 3.454682688372244*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"<<", "ItoCalculus`"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", "QuantumOperator`"}]}], "Input",
+ CellChangeTimes->{{3.4546826896608067`*^9, 3.454682696938875*^9}}],
+
+Cell[TextData[StyleBox["To check that they were loaded, and to see a list of \
+supplied functions, type",
+ FontSize->14]], "Text",
+ CellChangeTimes->{{3.454682702085664*^9, 3.454682720126*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "ItoCalculus`*"}]], "Input",
+ CellChangeTimes->{{3.454682721870367*^9, 3.454682732201397*^9}}],
+
+Cell[BoxData[
+ DynamicModuleBox[{Typeset`open$$ = True}, 
+  PaneSelectorBox[{False->
+   RowBox[{
+    OpenerBox[Dynamic[Typeset`open$$],
+     ImageSize->Small], 
+    StyleBox["ItoCalculus`", "InfoHeading"]}], True->GridBox[{
+     {
+      RowBox[{
+       OpenerBox[Dynamic[Typeset`open$$],
+        ImageSize->Small], 
+       StyleBox["ItoCalculus`", "InfoHeading"]}]},
+     {GridBox[{
+        {
+         ButtonBox["ItoDifferential",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735031-4117077", "ItoCalculus`ItoDifferential"},
+          ButtonNote->"ItoCalculus`"], 
+         ButtonBox["QuantumItoDifferential",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735031-4117077", "ItoCalculus`QuantumItoDifferential"},
+          ButtonNote->"ItoCalculus`"]},
+        {
+         ButtonBox["ItoProductRule",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735031-4117077", "ItoCalculus`ItoProductRule"},
+          ButtonNote->"ItoCalculus`"], 
+         ButtonBox["QuantumItoProductRule",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735031-4117077", "ItoCalculus`QuantumItoProductRule"},
+          ButtonNote->"ItoCalculus`"]}
+       },
+       DefaultBaseStyle->"InfoGrid",
+       GridBoxItemSize->{"Columns" -> {{
+            Scaled[0.475]}}}]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}}]}, 
+   Dynamic[Typeset`open$$],
+   ImageSize->Automatic]]], "Print", "InfoCell",
+ CellChangeTimes->{3.45475663165814*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "QuantumOperator`*"}]], "Input",
+ CellChangeTimes->{{3.454682733592285*^9, 3.454682738304008*^9}}],
+
+Cell[BoxData[
+ DynamicModuleBox[{Typeset`open$$ = True}, 
+  PaneSelectorBox[{False->
+   RowBox[{
+    OpenerBox[Dynamic[Typeset`open$$],
+     ImageSize->Small], 
+    StyleBox["QuantumOperator`", "InfoHeading"]}], True->GridBox[{
+     {
+      RowBox[{
+       OpenerBox[Dynamic[Typeset`open$$],
+        ImageSize->Small], 
+       StyleBox["QuantumOperator`", "InfoHeading"]}]},
+     {GridBox[{
+        {
+         ButtonBox["AddQuantumCommutator",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735033-7495228", "QuantumOperator`AddQuantumCommutator"},
+          ButtonNote->"QuantumOperator`"]},
+        {
+         ButtonBox["ClearQuantumCommutators",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735033-7495228", 
+            "QuantumOperator`ClearQuantumCommutators"},
+          ButtonNote->"QuantumOperator`"]},
+        {
+         ButtonBox["GetQuantumCommutators",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735033-7495228", "QuantumOperator`GetQuantumCommutators"},
+          
+          ButtonNote->"QuantumOperator`"]},
+        {
+         ButtonBox["QuantumCommutatorSimplify",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735033-7495228", 
+            "QuantumOperator`QuantumCommutatorSimplify"},
+          ButtonNote->"QuantumOperator`"]},
+        {
+         ButtonBox["QuantumConditionalExpectation",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735033-7495228", 
+            "QuantumOperator`QuantumConditionalExpectation"},
+          ButtonNote->"QuantumOperator`"]},
+        {
+         ButtonBox["QuantumConditionalExpectationDistribute",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735033-7495228", 
+            "QuantumOperator`QuantumConditionalExpectationDistribute"},
+          ButtonNote->"QuantumOperator`"]},
+        {
+         ButtonBox["QuantumOperator",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735033-7495228", "QuantumOperator`QuantumOperator"},
+          ButtonNote->"QuantumOperator`"]},
+        {
+         ButtonBox["QuantumTensor",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735033-7495228", "QuantumOperator`QuantumTensor"},
+          ButtonNote->"QuantumOperator`"]},
+        {
+         ButtonBox["QuantumTensorExpand",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735033-7495228", "QuantumOperator`QuantumTensorExpand"},
+          ButtonNote->"QuantumOperator`"]},
+        {
+         ButtonBox["QuantumTensorFactor",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735033-7495228", "QuantumOperator`QuantumTensorFactor"},
+          ButtonNote->"QuantumOperator`"]},
+        {
+         ButtonBox["RemoveQuantumCommutator",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info3454735033-7495228", 
+            "QuantumOperator`RemoveQuantumCommutator"},
+          ButtonNote->"QuantumOperator`"]}
+       },
+       DefaultBaseStyle->"InfoGrid",
+       GridBoxItemSize->{"Columns" -> {{
+            Scaled[0.95]}}}]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}}]}, 
+   Dynamic[Typeset`open$$],
+   ImageSize->Automatic]]], "Print", "InfoCell",
+ CellChangeTimes->{3.45475663353514*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The Quantum Operator package", "Subsection",
+ CellChangeTimes->{{3.454682757508772*^9, 3.454682762424275*^9}}],
+
+Cell[TextData[StyleBox["The main purpose of the Quantum Operator pacakge is \
+to help in simplifying complicated algebraic expressions involving quantum \
+operators.  It allows for simplication using quantum commutator rules, though \
+such simplifications can be finnicky for products of more than a few \
+operators.  It also allows for an explicit tensor product structure of \
+operators and some notational convenience for working with quantum filtering \
+equations.",
+ FontSize->14]], "Text",
+ CellChangeTimes->{{3.4546829244765778`*^9, 3.4546829257744207`*^9}, {
+  3.454683129414315*^9, 3.4546832449625587`*^9}, {3.454683277860718*^9, 
+  3.454683301949552*^9}, {3.4546838084160757`*^9, 3.454683816985935*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Defining quantum operators", "Subsubsection",
+ CellChangeTimes->{{3.454683273307515*^9, 3.454683276516151*^9}}],
+
+Cell["A quantum operator is defined by typing", "Text",
+ CellChangeTimes->{{3.454683310713311*^9, 3.454683328846294*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QuantumOperator", "[", 
+  SubscriptBox["F", "x"], "]"}]], "Input",
+ CellChangeTimes->{{3.454683329645612*^9, 3.454683334336678*^9}}],
+
+Cell[BoxData[
+ OverscriptBox[
+  SubscriptBox["F", "x"], "\[Wedge]"]], "Output",
+ CellChangeTimes->{3.4546833391719437`*^9, 3.454756600255468*^9, 
+  3.45475664339631*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["You can see that ",
+  FontSize->14],
+ StyleBox["Mathematica",
+  FontSize->14,
+  FontSlant->"Italic"],
+ StyleBox[" actually offers a hat notation for writing QuantumOperators.  To \
+use that directly, type ctrl+shift+7 when the operator name is highlighted to \
+place the input above the name.  Then type \"Escape ^ Escape\" to input the \
+hat operator there.",
+  FontSize->14]
+}], "Text",
+ CellChangeTimes->{{3.454683345881632*^9, 3.454683447189137*^9}, {
+  3.454691782057716*^9, 3.4546917880703707`*^9}}],
+
+Cell[TextData[{
+ "Note that although the above definition looks like a function call, it is \
+never evaluated and just serves as a holder for the QuantumOperator object.  \
+Moreover, this is not a variable definition either.  In order to use the same \
+exact operator elsewhere, one needs to input ",
+ StyleBox["the same operator",
+  FontWeight->"Bold"],
+ " using the QuantumOperator[] notation or the hat notation.\n\nAlso be \
+careful when using the symbolic hat notation that the correct items are under \
+the hat.  It is easy to end up with minus signs or commas underneath which \
+should be outside, e.g"
+}], "Text",
+ CellChangeTimes->{{3.454683502804576*^9, 3.4546836024455214`*^9}, {
+  3.4547570954588947`*^9, 3.454757144183137*^9}, {3.4547574350732117`*^9, 
+  3.454757444859992*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  OverscriptBox[
+   RowBox[{"-", 
+    SuperscriptBox["L", "\[Dagger]"]}], "\[Wedge]"], "//", 
+  "FullForm"}]], "Input",
+ CellChangeTimes->{{3.454757147020728*^9, 3.454757165798583*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   RowBox[{"QuantumOperator", "[", 
+    RowBox[{"Times", "[", 
+     RowBox[{
+      RowBox[{"-", "1"}], ",", 
+      RowBox[{"SuperDagger", "[", "L", "]"}]}], "]"}], "]"}],
+   ShowStringCharacters->True,
+   NumberMarks->True],
+  FullForm]], "Output",
+ CellChangeTimes->{3.454757166291144*^9}]
+}, Open  ]],
+
+Cell["versus what you probably want", "Text",
+ CellChangeTimes->{{3.454757172529727*^9, 3.45475719029443*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", 
+   OverscriptBox[
+    SuperscriptBox["L", "\[Dagger]"], "\[Wedge]"]}], "//", 
+  "FullForm"}]], "Input",
+ CellChangeTimes->{{3.4547571911410923`*^9, 3.454757209472905*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   RowBox[{"Times", "[", 
+    RowBox[{
+     RowBox[{"-", "1"}], ",", 
+     RowBox[{"QuantumOperator", "[", 
+      RowBox[{"SuperDagger", "[", "L", "]"}], "]"}]}], "]"}],
+   ShowStringCharacters->True,
+   NumberMarks->True],
+  FullForm]], "Output",
+ CellChangeTimes->{3.4547572098811073`*^9}]
+}, Open  ]],
+
+Cell["\<\
+For this reason, it is sometimes best to use QuantumOperator[] directly in \
+order to avoid these issues which end up causing sometimes baffling \
+simplification issues.\
+\>", "Text",
+ CellChangeTimes->{{3.454757222789032*^9, 3.454757266723233*^9}},
+ FontSize->14]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Multiplying quantum operators", "Subsubsection",
+ CellChangeTimes->{{3.454683606757964*^9, 3.454683610846046*^9}}],
+
+Cell["\<\
+To multiple quantum operators, use the ** NonCommutativeMultiply notation:\
+\>", "Text",
+ CellChangeTimes->{{3.454683616181747*^9, 3.4546836374553022`*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  OverscriptBox[
+   SubscriptBox["F", "x"], "\[Wedge]"], "**", 
+  OverscriptBox[
+   SubscriptBox["F", "y"], "\[Wedge]"]}]], "Input",
+ CellChangeTimes->{{3.454683644623395*^9, 3.454683650665155*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  OverscriptBox[
+   SubscriptBox["F", "x"], "\[Wedge]"], "**", 
+  OverscriptBox[
+   SubscriptBox["F", "y"], "\[Wedge]"]}]], "Output",
+ CellChangeTimes->{3.454756646192954*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The double * tells ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " that the order of the multiplication matters.  The QuantumOperator package \
+does have some rules for simplifying obvious constructions, such as \
+multipliying by the identity (QuantumOperator[1])"
+}], "Text",
+ CellChangeTimes->{{3.454683651685186*^9, 3.454683729597981*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   OverscriptBox[
+    SubscriptBox["F", "y"], "\[Wedge]"], "**", 
+   OverscriptBox["1", "\[Wedge]"]}], " ", "+", " ", 
+  RowBox[{
+   OverscriptBox["1", "\[Wedge]"], "**", 
+   OverscriptBox[
+    SubscriptBox["F", "x"], "\[Wedge]"]}]}]], "Input",
+ CellChangeTimes->{{3.454683707006751*^9, 3.454683752462645*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  OverscriptBox[
+   SubscriptBox["F", "x"], "\[Wedge]"], "+", 
+  OverscriptBox[
+   SubscriptBox["F", "y"], "\[Wedge]"]}]], "Output",
+ CellChangeTimes->{3.454756651338039*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Defining QuantumCommutators", "Subsubsection",
+ CellChangeTimes->{{3.454689178075604*^9, 3.454689185360873*^9}, {
+  3.454690053913642*^9, 3.454690054505271*^9}}],
+
+Cell[TextData[{
+ "In order to simplify quantum operator expressions by using quantum \
+commutator rules, you must first teach ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " these commutator relations using"
+}], "Text",
+ CellChangeTimes->{{3.454689194170198*^9, 3.454689286678689*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "AddQuantumCommutator"}]], "Input",
+ CellChangeTimes->{{3.4546892878817863`*^9, 3.454689300831819*^9}, 
+   3.4546901284540443`*^9}],
+
+Cell[BoxData[
+ StyleBox["\<\"QuantumCommutator allows you to specify rules for performing \
+commutation \\nrelations.  QuantumCommutator[ Operator[a], Operator[b], \
+Operator[c] ] sets a rule that \\nOperator[b] ** Operator[a] -> Operator[a] \
+** Operator[b]  - Operactor[c]. All rules set are then used\\nby calling \
+QuantumCommutatorSimplify on an expression.  Returns the list of current \
+rules.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.454756600815645*^9},
+ CellTags->"Info3454735000-1966678"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Thus the commutator relation teaches ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " the preferred operator ordering of a pair of operators.   For the angular \
+momentum operators, one might write"
+}], "Text",
+ CellChangeTimes->{{3.454689315165639*^9, 3.4546893181034803`*^9}, {
+  3.454689477881055*^9, 3.454689551844262*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"AddQuantumCommutator", "[", 
+   RowBox[{
+    OverscriptBox[
+     SubscriptBox["F", "x"], "\[Wedge]"], ",", 
+    OverscriptBox[
+     SubscriptBox["F", "y"], "\[Wedge]"], ",", 
+    RowBox[{"I", "*", 
+     OverscriptBox[
+      SubscriptBox["F", "z"], "\[Wedge]"]}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AddQuantumCommutator", "[", 
+   RowBox[{
+    OverscriptBox[
+     SubscriptBox["F", "y"], "\[Wedge]"], ",", 
+    OverscriptBox[
+     SubscriptBox["F", "z"], "\[Wedge]"], ",", 
+    RowBox[{"I", "*", 
+     OverscriptBox[
+      SubscriptBox["F", "x"], "\[Wedge]"]}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AddQuantumCommutator", "[", 
+  RowBox[{
+   OverscriptBox[
+    SubscriptBox["F", "x"], "\[Wedge]"], ",", 
+   OverscriptBox[
+    SubscriptBox["F", "z"], "\[Wedge]"], ",", 
+   RowBox[{
+    RowBox[{"-", "I"}], "*", 
+    OverscriptBox[
+     SubscriptBox["F", "y"], "\[Wedge]"]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.454689554237507*^9, 3.454689601162539*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      SubscriptBox["F", "y"], "\[Wedge]"], "**", 
+     OverscriptBox[
+      SubscriptBox["F", "x"], "\[Wedge]"]}], "\[Rule]", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox[
+       SubscriptBox["F", "x"], "\[Wedge]"], "**", 
+      OverscriptBox[
+       SubscriptBox["F", "y"], "\[Wedge]"]}], "-", 
+     RowBox[{"\[ImaginaryI]", " ", 
+      OverscriptBox[
+       SubscriptBox["F", "z"], "\[Wedge]"]}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      SubscriptBox["F", "z"], "\[Wedge]"], "**", 
+     OverscriptBox[
+      SubscriptBox["F", "y"], "\[Wedge]"]}], "\[Rule]", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox[
+       SubscriptBox["F", "y"], "\[Wedge]"], "**", 
+      OverscriptBox[
+       SubscriptBox["F", "z"], "\[Wedge]"]}], "-", 
+     RowBox[{"\[ImaginaryI]", " ", 
+      OverscriptBox[
+       SubscriptBox["F", "x"], "\[Wedge]"]}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      SubscriptBox["F", "z"], "\[Wedge]"], "**", 
+     OverscriptBox[
+      SubscriptBox["F", "x"], "\[Wedge]"]}], "\[Rule]", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox[
+       SubscriptBox["F", "x"], "\[Wedge]"], "**", 
+      OverscriptBox[
+       SubscriptBox["F", "z"], "\[Wedge]"]}], "+", 
+     RowBox[{"\[ImaginaryI]", " ", 
+      OverscriptBox[
+       SubscriptBox["F", "y"], "\[Wedge]"]}]}]}]}], "}"}]], "Output",
+ CellChangeTimes->{3.454756605391263*^9, 3.45475665659807*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Note that the last commutator is the opposite ordering of what one might \
+expect.  This is done to ensure an overall ordering to the angular momentum \
+operators, that ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["F", "x"], TraditionalForm]]],
+ " is to the left of both ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["F", "y"], " ", "and", " ", 
+    SubscriptBox["F", "z"], " ", "and", " ", 
+    SubscriptBox["F", "y"], " ", "is", " ", "to", " ", "the", " ", "left", 
+    " ", "of", " ", 
+    RowBox[{
+     SubscriptBox["F", "z"], " ", "."}]}], TraditionalForm]]]
+}], "Text",
+ CellChangeTimes->{{3.4546896080807953`*^9, 3.454689680820862*^9}, 
+   3.454690041995695*^9, {3.454757495020653*^9, 3.454757496088076*^9}},
+ FontSize->14],
+
+Cell[TextData[StyleBox["You can also remove a quantum commmutator via",
+ FontSize->14]], "Text",
+ CellChangeTimes->{{3.454690063337438*^9, 3.454690073745929*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "RemoveQuantumCommutator"}]], "Input",
+ CellChangeTimes->{{3.454690074906122*^9, 3.4546900827232924`*^9}, 
+   3.454690124561038*^9}],
+
+Cell[BoxData[
+ StyleBox["\<\" Removes the specified commutator from the list of rules. \
+\\nSo RemoveQuantumCommutator[Operator[a],Operator[b] ] removes the rules for \
+those operators.  Returns the list\\nof current rules\"\>", "MSG"]], "Print", \
+"PrintUsage",
+ CellChangeTimes->{3.454756601337235*^9},
+ CellTags->"Info3454735001-4961732"]
+}, Open  ]],
+
+Cell["or clear all commutators via", "Text",
+ CellChangeTimes->{{3.4546900937993793`*^9, 3.454690105043009*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "ClearQuantumCommutators"}]], "Input",
+ CellChangeTimes->{{3.454690105992812*^9, 3.454690119164914*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\" Clears list of quantum commutator rules\"\>", "MSG"]], "Print",\
+ "PrintUsage",
+ CellChangeTimes->{3.45475660172019*^9},
+ CellTags->"Info3454735001-5536997"]
+}, Open  ]],
+
+Cell["To get a list of commutators, use", "Text",
+ CellChangeTimes->{{3.4546914743271503`*^9, 3.4546914901096287`*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GetQuantumCommutators", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.45469149169683*^9, 3.454691499751013*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      SubscriptBox["F", "y"], "\[Wedge]"], "**", 
+     OverscriptBox[
+      SubscriptBox["F", "x"], "\[Wedge]"]}], "\[Rule]", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox[
+       SubscriptBox["F", "x"], "\[Wedge]"], "**", 
+      OverscriptBox[
+       SubscriptBox["F", "y"], "\[Wedge]"]}], "-", 
+     RowBox[{"\[ImaginaryI]", " ", 
+      OverscriptBox[
+       SubscriptBox["F", "z"], "\[Wedge]"]}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      SubscriptBox["F", "z"], "\[Wedge]"], "**", 
+     OverscriptBox[
+      SubscriptBox["F", "y"], "\[Wedge]"]}], "\[Rule]", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox[
+       SubscriptBox["F", "y"], "\[Wedge]"], "**", 
+      OverscriptBox[
+       SubscriptBox["F", "z"], "\[Wedge]"]}], "-", 
+     RowBox[{"\[ImaginaryI]", " ", 
+      OverscriptBox[
+       SubscriptBox["F", "x"], "\[Wedge]"]}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox[
+      SubscriptBox["F", "z"], "\[Wedge]"], "**", 
+     OverscriptBox[
+      SubscriptBox["F", "x"], "\[Wedge]"]}], "\[Rule]", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox[
+       SubscriptBox["F", "x"], "\[Wedge]"], "**", 
+      OverscriptBox[
+       SubscriptBox["F", "z"], "\[Wedge]"]}], "+", 
+     RowBox[{"\[ImaginaryI]", " ", 
+      OverscriptBox[
+       SubscriptBox["F", "y"], "\[Wedge]"]}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox["p", "\[Wedge]"], "**", 
+     OverscriptBox["x", "\[Wedge]"]}], "\[Rule]", 
+    RowBox[{
+     RowBox[{
+      OverscriptBox["x", "\[Wedge]"], "**", 
+      OverscriptBox["p", "\[Wedge]"]}], "-", 
+     RowBox[{"\[ImaginaryI]", " ", 
+      OverscriptBox["1", "\[Wedge]"]}]}]}]}], "}"}]], "Output",
+ CellChangeTimes->{3.4546915001439447`*^9, 3.454756601865994*^9, 
+  3.454757511373909*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Simplifying expressions using QuantumCommutators", "Subsubsection",
+ CellChangeTimes->{{3.4546901401685877`*^9, 3.4546901537894297`*^9}}],
+
+Cell["\<\
+After defining quantum commutators, you may simplify expressions by calling \
+QuantumCommutatorSimplify.  For example, a double commutator often appears in \
+a Lindblad term and can be evaluated via\
+\>", "Text",
+ CellChangeTimes->{{3.454690155813469*^9, 3.454690233737215*^9}},
+ FontSize->14],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CommuteOperators", "[", 
+   RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"a", "**", "b"}], "-", 
+   RowBox[{"b", "**", "a"}]}]}]], "Input",
+ CellChangeTimes->{{3.454690200720172*^9, 3.4546902383208923`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CommuteOperators", "[", 
+  RowBox[{
+   OverscriptBox[
+    SubscriptBox["F", "z"], "\[Wedge]"], ",", 
+   RowBox[{"CommuteOperators", "[", 
+    RowBox[{
+     OverscriptBox[
+      SubscriptBox["F", "y"], "\[Wedge]"], ",", 
+     OverscriptBox[
+      SubscriptBox["F", "z"], "\[Wedge]"]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4546902408651943`*^9, 3.454690276488905*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", 
+   RowBox[{
+    OverscriptBox[
+     SubscriptBox["F", "y"], "\[Wedge]"], "**", 
+    OverscriptBox[
+     SubscriptBox["F", "z"], "\[Wedge]"], "**", 
+    OverscriptBox[
+     SubscriptBox["F", "z"], "\[Wedge]"]}]}], "+", 
+  RowBox[{"2", " ", 
+   RowBox[{
+    OverscriptBox[
+     SubscriptBox["F", "z"], "\[Wedge]"], "**", 
+    OverscriptBox[
+     SubscriptBox["F", "y"], "\[Wedge]"], "**", 
+    OverscriptBox[
+     SubscriptBox["F", "z"], "\[Wedge]"]}]}], "-", 
+  RowBox[{
+   OverscriptBox[
+    SubscriptBox["F", "z"], "\[Wedge]"], "**", 
+   OverscriptBox[
+    SubscriptBox["F", "z"], "\[Wedge]"], "**", 
+   OverscriptBox[
+    SubscriptBox["F", "y"], "\[Wedge]"]}]}]], "Output",
+ CellChangeTimes->{3.4547566663986273`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QuantumCommutatorSimplify", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.454690279955062*^9, 3.454690285269459*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  OverscriptBox[
+   SubscriptBox["F", "y"], "\[Wedge]"]}]], "Output",
+ CellChangeTimes->{3.4547566690511093`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A note on harmonic oscillator commutator", "Subsubsection",
+ CellChangeTimes->{{3.45469047883737*^9, 3.4546904849329567`*^9}}],
+
+Cell["\<\
+When operators commutate to a number, be sure to use the implicit identity \
+operator in the definition, otherwise unexpected results may occur.  Thus for \
+position and momentum (in units where \[HBar]=1), you would write\
+\>", "Text",
+ CellChangeTimes->{{3.454690490359056*^9, 3.454690556944819*^9}},
+ FontSize->14],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"AddQuantumCommutator", "[", 
+   RowBox[{
+    OverscriptBox["x", "\[Wedge]"], ",", 
+    OverscriptBox["p", "\[Wedge]"], ",", 
+    RowBox[{"I", "*", 
+     OverscriptBox["1", "\[Wedge]"]}]}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.4546905580527487`*^9, 3.454690630774691*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Using quantum tensor product", "Subsubsection",
+ CellChangeTimes->{{3.454691537708527*^9, 3.454691547600493*^9}}],
+
+Cell["\<\
+The quantum tensor structure allows for multipartite quantum operators, \
+\>", "Text",
+ CellChangeTimes->{{3.454691551706218*^9, 3.454691594659238*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QuantumTensor", "[", 
+  RowBox[{
+   OverscriptBox[
+    SubscriptBox["F", "x"], "\[Wedge]"], ",", 
+   OverscriptBox["x", "\[Wedge]"]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4546915883183193`*^9, 3.4546916093332567`*^9}, {
+  3.454691665552861*^9, 3.454691677625093*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  OverscriptBox[
+   SubscriptBox["F", "x"], "\[Wedge]"], "\[CircleTimes]", 
+  OverscriptBox["x", "\[Wedge]"]}]], "Output",
+ CellChangeTimes->{3.454756676342174*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "As illustrated above, a shorthand notation involves the \[CircleTimes] \
+symbol, which is input by typing \"Escape *c Escape\". \n\nNon-commutative \
+multiplication respects this structure as well, though you will need to \
+ensure the same number of tensor product members appear in each term.  \
+Parenthesis are also needed in order for ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " to interpret operator ordering correctly."
+}], "Text",
+ CellChangeTimes->{{3.45469168643258*^9, 3.454691794374302*^9}, {
+  3.4546925124654093`*^9, 3.454692556194005*^9}, {3.454692591534511*^9, 
+  3.454692608620564*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    OverscriptBox[
+     SubscriptBox["F", "x"], "\[Wedge]"], "\[CircleTimes]", 
+    OverscriptBox["x", "\[Wedge]"]}], ")"}], "**", 
+  RowBox[{"(", 
+   RowBox[{
+    OverscriptBox["1", "\[Wedge]"], "\[CircleTimes]", 
+    OverscriptBox["x", "\[Wedge]"]}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.4546925607659397`*^9, 3.454692587806329*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  OverscriptBox[
+   SubscriptBox["F", "x"], "\[Wedge]"], "\[CircleTimes]", 
+  RowBox[{
+   OverscriptBox["x", "\[Wedge]"], "**", 
+   OverscriptBox["x", "\[Wedge]"]}]}]], "Output",
+ CellChangeTimes->{3.4547566801618223`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Although you can define QuantumCommutators on tensor operators, it is \
+probably more convenient to apply them directly when a tensor product shares \
+common sub-elements.  To simplify to such forms, use QuantumTensorFactor, \
+e.g.\
+\>", "Text",
+ CellChangeTimes->{{3.454692696055541*^9, 3.4546927352075453`*^9}, 
+   3.454692784823551*^9},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QuantumTensorFactor", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      OverscriptBox[
+       SubscriptBox["F", "x"], "\[Wedge]"], "\[CircleTimes]", 
+      OverscriptBox["x", "\[Wedge]"]}], ")"}], "**", 
+    RowBox[{"(", 
+     RowBox[{
+      OverscriptBox["1", "\[Wedge]"], "\[CircleTimes]", 
+      OverscriptBox["p", "\[Wedge]"]}], ")"}]}], "-", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      OverscriptBox["1", "\[Wedge]"], "\[CircleTimes]", 
+      OverscriptBox["p", "\[Wedge]"]}], ")"}], "**", 
+    RowBox[{"(", 
+     RowBox[{
+      OverscriptBox[
+       SubscriptBox["F", "x"], "\[Wedge]"], "\[CircleTimes]", 
+      OverscriptBox["x", "\[Wedge]"]}], ")"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4546927373048697`*^9, 3.454692781561166*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  OverscriptBox[
+   SubscriptBox["F", "x"], "\[Wedge]"], "\[CircleTimes]", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{
+      OverscriptBox["p", "\[Wedge]"], "**", 
+      OverscriptBox["x", "\[Wedge]"]}]}], "+", 
+    RowBox[{
+     OverscriptBox["x", "\[Wedge]"], "**", 
+     OverscriptBox["p", "\[Wedge]"]}]}], ")"}]}]], "Output",
+ CellChangeTimes->{3.4547566833892307`*^9}]
+}, Open  ]],
+
+Cell["so that", "Text",
+ CellChangeTimes->{{3.4546927913036327`*^9, 3.454692792378621*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QuantumCommutatorSimplify", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.4546927936490097`*^9, 3.454692798803481*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[ImaginaryI]", " ", 
+  RowBox[{
+   OverscriptBox[
+    SubscriptBox["F", "x"], "\[Wedge]"], "\[CircleTimes]", 
+   OverscriptBox["1", "\[Wedge]"]}]}]], "Output",
+ CellChangeTimes->{3.4546927992063513`*^9, 3.454756602069332*^9, 
+  3.45475668749907*^9}]
+}, Open  ]],
+
+Cell["\<\
+Conversely, there may be times when you want to expand an expression in terms \
+of constituent tensor product components via QuantumTensorExpand\
+\>", "Text",
+ CellChangeTimes->{{3.454692804185461*^9, 3.454692864796237*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QuantumTensorExpand", "[", 
+  RowBox[{
+   OverscriptBox[
+    SubscriptBox["F", "x"], "\[Wedge]"], "\[CircleTimes]", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      OverscriptBox["p", "\[Wedge]"]}], " ", "+", 
+     OverscriptBox["x", "\[Wedge]"]}], ")"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.45469286731581*^9, 3.454692890575076*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", 
+   RowBox[{"(", 
+    RowBox[{
+     OverscriptBox[
+      SubscriptBox["F", "x"], "\[Wedge]"], "\[CircleTimes]", 
+     OverscriptBox["p", "\[Wedge]"]}], ")"}]}], "+", 
+  RowBox[{
+   OverscriptBox[
+    SubscriptBox["F", "x"], "\[Wedge]"], "\[CircleTimes]", 
+   OverscriptBox["x", "\[Wedge]"]}]}]], "Output",
+ CellChangeTimes->{3.454756692946177*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["QuantumConditionalExpectation", "Subsubsection",
+ CellChangeTimes->{{3.4546929053265467`*^9, 3.454692911862562*^9}}],
+
+Cell["\<\
+QuantumConditionalExpectation is useful for symbolically writing quantum \
+filtering equations, e.g.\
+\>", "Text",
+ CellChangeTimes->{{3.4546929310724916`*^9, 3.454692963905044*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QuantumConditionalExpectation", "[", 
+  RowBox[{
+   RowBox[{
+    OverscriptBox[
+     SubscriptBox["F", "z"], "\[Wedge]"], "**", 
+    OverscriptBox["X", "\[Wedge]"]}], "-", 
+   RowBox[{
+    OverscriptBox["X", "\[Wedge]"], "**", 
+    OverscriptBox[
+     SubscriptBox["F", "z"], "\[Wedge]"]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.45469296597141*^9, 3.454692999748575*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[Pi]", "[", 
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     OverscriptBox["X", "\[Wedge]"], "**", 
+     OverscriptBox[
+      SubscriptBox["F", "z"], "\[Wedge]"]}]}], "+", 
+   RowBox[{
+    OverscriptBox[
+     SubscriptBox["F", "z"], "\[Wedge]"], "**", 
+    OverscriptBox["X", "\[Wedge]"]}]}], "]"}]], "Output",
+ CellChangeTimes->{3.454756695665804*^9}]
+}, Open  ]],
+
+Cell["\<\
+Again, we see that it is symbolically represented as \[Pi][], where \[Pi] is \
+entered via \"escape, p, escape\".  Although the quantum conditional \
+expectation internally respects quantum operator ordering, you can represent \
+the commutative nature of products of terms using the normal * \
+multiplication, e.g.\
+\>", "Text",
+ CellChangeTimes->{{3.454693006898477*^9, 3.4546930898089027`*^9}, 
+   3.454757596346238*^9},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Pi]", "[", 
+   OverscriptBox[
+    SubscriptBox["F", "z"], "\[Wedge]"], "]"}], "*", 
+  RowBox[{"\[Pi]", "[", 
+   OverscriptBox["X", "\[Wedge]"], "]"}]}]], "Input",
+ CellChangeTimes->{{3.454693090483137*^9, 3.454693107986258*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Pi]", "[", 
+   OverscriptBox["X", "\[Wedge]"], "]"}], " ", 
+  RowBox[{"\[Pi]", "[", 
+   OverscriptBox[
+    SubscriptBox["F", "z"], "\[Wedge]"], "]"}]}]], "Output",
+ CellChangeTimes->{3.4547566083991737`*^9, 3.454756701026828*^9}]
+}, Open  ]],
+
+Cell["\<\
+It is also worth noting that both the tensor product structure and quantum \
+commutator simplifications may be applied to objects within a \
+QuantumConditionalExpectation, e.g.\
+\>", "Text",
+ CellChangeTimes->{{3.45469312325965*^9, 3.454693168659519*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QuantumCommutatorSimplify", "[", 
+  RowBox[{"\[Pi]", "[", 
+   RowBox[{"QuantumTensorFactor", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        OverscriptBox[
+         SubscriptBox["F", "x"], "\[Wedge]"], "\[CircleTimes]", 
+        OverscriptBox["x", "\[Wedge]"]}], ")"}], "**", 
+      RowBox[{"(", 
+       RowBox[{
+        OverscriptBox["1", "\[Wedge]"], "\[CircleTimes]", 
+        OverscriptBox["p", "\[Wedge]"]}], ")"}]}], "-", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        OverscriptBox["1", "\[Wedge]"], "\[CircleTimes]", 
+        OverscriptBox["p", "\[Wedge]"]}], ")"}], "**", 
+      RowBox[{"(", 
+       RowBox[{
+        OverscriptBox[
+         SubscriptBox["F", "x"], "\[Wedge]"], "\[CircleTimes]", 
+        OverscriptBox["x", "\[Wedge]"]}], ")"}]}]}], "]"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.454693176207698*^9, 3.454693183319069*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[ImaginaryI]", " ", 
+  RowBox[{"\[Pi]", "[", 
+   RowBox[{
+    OverscriptBox[
+     SubscriptBox["F", "x"], "\[Wedge]"], "\[CircleTimes]", 
+    OverscriptBox["1", "\[Wedge]"]}], "]"}]}]], "Output",
+ CellChangeTimes->{3.454756610459647*^9, 3.4547567034689007`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Notice that constants are factored out of the \[Pi].
+
+Lastly, it might be convenient to distribute the conditional expectation \
+operator amongst terms and is accomplished via\
+\>", "Text",
+ CellChangeTimes->{{3.454693189250049*^9, 3.454693237670718*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QuantumConditionalExpectationDistribute", "[", " ", 
+  RowBox[{"\[Pi]", "[", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{
+      OverscriptBox["X", "\[Wedge]"], "**", 
+      OverscriptBox[
+       SubscriptBox["F", "z"], "\[Wedge]"]}]}], "+", 
+    RowBox[{
+     OverscriptBox[
+      SubscriptBox["F", "z"], "\[Wedge]"], "**", 
+     OverscriptBox["X", "\[Wedge]"]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.454693245304914*^9, 3.454693253433552*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", 
+   RowBox[{"\[Pi]", "[", 
+    RowBox[{
+     OverscriptBox["X", "\[Wedge]"], "**", 
+     OverscriptBox[
+      SubscriptBox["F", "z"], "\[Wedge]"]}], "]"}]}], "+", 
+  RowBox[{"\[Pi]", "[", 
+   RowBox[{
+    OverscriptBox[
+     SubscriptBox["F", "z"], "\[Wedge]"], "**", 
+    OverscriptBox["X", "\[Wedge]"]}], "]"}]}]], "Output",
+ CellChangeTimes->{3.454756612243711*^9, 3.454756707669482*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The ItoCalculus Package", "Subsection",
+ CellChangeTimes->{{3.454693258304295*^9, 3.454693269528451*^9}}],
+
+Cell["\<\
+The ItoCalculus package is intended to simplify the manipulation of both \
+classical and quantum stochastic differential equations, particularly the Ito \
+product rule.\
+\>", "Text",
+ CellChangeTimes->{{3.454693272285761*^9, 3.454693326299429*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell["Classical SDEs", "Subsubsection",
+ CellChangeTimes->{{3.4546933308447437`*^9, 3.454693336051751*^9}}],
+
+Cell[TextData[{
+ "To enter a classical SDE, use the ItoDifferential function, whose first \
+argument is the dt term and whose second argument is the ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["dW", "t"], " ", 
+    RowBox[{"term", "."}]}], TraditionalForm]]]
+}], "Text",
+ CellChangeTimes->{{3.454693338994319*^9, 3.454693367080867*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ItoDifferential", "[", 
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"X", "^", "2"}]}], ",", "X"}], "]"}]], "Input",
+ CellChangeTimes->{{3.45469336975388*^9, 3.4546933866312723`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", 
+    SuperscriptBox["X", "2"]}], "\[CenterDot]", "dt"}], " ", "+", " ", 
+  RowBox[{"X", "\[CenterDot]", 
+   SubscriptBox["dW", "t"]}]}]], "Output",
+ CellChangeTimes->{3.454693387223064*^9, 3.4547566021884813`*^9, 
+  3.4547567102666903`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Notice that ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " formats the diffential in the natural way.  Although such a representation \
+is visually appealing, ItoDifferential terms also automatically calculate the \
+correct products of differentials.  For example, to check that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       SubscriptBox["dW", "t"], ")"}], "2"], "=", "dt"}], ",", " ", 
+    RowBox[{"simply", " ", "type"}]}], TraditionalForm]]]
+}], "Text",
+ CellChangeTimes->{{3.454693397467182*^9, 3.4546934780414667`*^9}, {
+  3.4547576574795837`*^9, 3.454757670420642*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ItoDifferential", "[", 
+   RowBox[{"0", ",", "1"}], "]"}], "*", 
+  RowBox[{"ItoDifferential", "[", 
+   RowBox[{"0", ",", "1"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.454693480155851*^9, 3.4546934869388227`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"1", "\[CenterDot]", "dt"}], " ", "+", " ", 
+  RowBox[{"0", "\[CenterDot]", 
+   SubscriptBox["dW", "t"]}]}]], "Output",
+ CellChangeTimes->{3.454693487336783*^9, 3.454756602245181*^9, 
+  3.45475671496351*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Classical Ito Product Rule", "Subsubsection",
+ CellChangeTimes->{{3.454693499540113*^9, 3.454693505692424*^9}}],
+
+Cell[TextData[{
+ "One particularly common term to consider is the Ito product rule which is \
+encapsulated in the ItoProductRule function.  This function considers the SDE \
+for a product ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       SubscriptBox["X", "1"], "*", 
+       SubscriptBox["X", "2"]}], "..."}], "*", 
+     SubscriptBox["X", "n"], " ", "where", " ", 
+     SubscriptBox["X", "i"], " ", "is", " ", "a", " ", "process", " ", 
+     "which", " ", "has", " ", "its", " ", "own", " ", "SDE", " ", 
+     RowBox[{
+      SubscriptBox["dX", "i"], ".", "  ", "To"}], " ", "calculate", " ", 
+     "the", " ", "SDE", " ", "for", " ", "the", " ", "product"}], ",", " ", 
+    RowBox[{
+    "the", " ", "ItoProductRule", " ", "function", " ", "takes", " ", "as", 
+     " ", "its", " ", "first", " ", "argument", " ", "the", " ", "list", " ", 
+     "of", " ", "process", " ", "variable", " ", "names", " ", "and", " ", 
+     "as", " ", "its", " ", "second", " ", "argument"}], ",", " ", 
+    RowBox[{
+    "a", " ", "corresponding", " ", "list", " ", "of", " ", "SDEs", " ", 
+     "for", " ", "those", " ", 
+     RowBox[{"variables", ".", "  ", "For"}], " ", "example"}]}], 
+   TraditionalForm]]],
+ " "
+}], "Text",
+ CellChangeTimes->{{3.454693507724831*^9, 3.454693634189208*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  SubscriptBox["dX", "1"], "=", 
+  RowBox[{"ItoDifferential", "[", 
+   RowBox[{"0", ",", 
+    SubscriptBox["X", "1"]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["dX", "2"], "=", 
+  RowBox[{"ItoDifferential", "[", 
+   RowBox[{
+    SubscriptBox["X", "2"], ",", 
+    SubscriptBox["X", "2"]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.454693636608612*^9, 3.454693660974002*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"0", "\[CenterDot]", "dt"}], " ", "+", " ", 
+  RowBox[{
+   SubscriptBox["X", "1"], "\[CenterDot]", 
+   SubscriptBox["dW", "t"]}]}]], "Output",
+ CellChangeTimes->{3.454693661974567*^9, 3.454756602291318*^9, 
+  3.45475671886091*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox["X", "2"], "\[CenterDot]", "dt"}], " ", "+", " ", 
+  RowBox[{
+   SubscriptBox["X", "2"], "\[CenterDot]", 
+   SubscriptBox["dW", "t"]}]}]], "Output",
+ CellChangeTimes->{3.454693661974567*^9, 3.454756602291318*^9, 
+  3.4547567189027653`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ItoProductRule", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["X", "1"], ",", 
+     SubscriptBox["X", "2"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["dX", "1"], ",", 
+     SubscriptBox["dX", "2"]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.454693663455017*^9, 3.454693675779035*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"2", " ", 
+     SubscriptBox["X", "1"], " ", 
+     SubscriptBox["X", "2"]}], ")"}], "\[CenterDot]", "dt"}], " ", "+", " ", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"2", " ", 
+     SubscriptBox["X", "1"], " ", 
+     SubscriptBox["X", "2"]}], ")"}], "\[CenterDot]", 
+   SubscriptBox["dW", "t"]}]}]], "Output",
+ CellChangeTimes->{3.454693676171913*^9, 3.454756602341846*^9, 
+  3.4547567234550858`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Quantum SDEs", "Subsubsection",
+ CellChangeTimes->{{3.45469370393955*^9, 3.454693708819954*^9}}],
+
+Cell[TextData[{
+ "The package provides a QuantumItoDifferential function for representing \
+quantum SDEs.  These have four arguments, which represent the deterministic, \
+",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["A", "t"], ",", 
+    RowBox[{
+     SuperscriptBox[
+      SubscriptBox["A", "t"], "\[Dagger]"], "and", " ", 
+     SubscriptBox["\[CapitalLambda]", "t"], " ", "process", " ", 
+     RowBox[{"coefficients", ".", "  "}]}]}], TraditionalForm]]],
+ "Although not required, these coefficients are often quantum operators."
+}], "Text",
+ CellChangeTimes->{{3.454693711443078*^9, 3.45469379715282*^9}, {
+  3.4546959179637203`*^9, 3.4546959182605753`*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QuantumItoDifferential", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", "I"}], "*", 
+    OverscriptBox["H", "\[Wedge]"]}], ",", 
+   OverscriptBox[
+    SuperscriptBox["L", "\[Dagger]"], "\[Wedge]"], ",", 
+   RowBox[{"-", 
+    OverscriptBox["L", "\[Wedge]"]}], ",", "0"}], "]"}]], "Input",
+ CellChangeTimes->{{3.454693770240779*^9, 3.454693835132454*^9}, {
+  3.454695677176005*^9, 3.454695700794907*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", "\[ImaginaryI]"}], " ", 
+     OverscriptBox["H", "\[Wedge]"]}], ")"}], "\[CenterDot]", "dt"}], " ", 
+  "+", " ", 
+  RowBox[{
+   OverscriptBox[
+    SuperscriptBox["L", "\[Dagger]"], "\[Wedge]"], "\[CenterDot]", 
+   SubscriptBox["dA", "t"]}], "+", " ", 
+  RowBox[{
+   RowBox[{"-", 
+    OverscriptBox["L", "\[Wedge]"]}], "\[CenterDot]", 
+   SubscriptBox[
+    SuperscriptBox["dA", "\[Dagger]"], "t"]}], "+", " ", 
+  RowBox[{"0", "\[CenterDot]", 
+   SubscriptBox["d\[CapitalLambda]", "t"]}]}]], "Output",
+ CellChangeTimes->{3.4547566154593887`*^9, 3.454756726890992*^9}]
+}, Open  ]],
+
+Cell["\<\
+Again, products of such differentials are defined via the fundamental Ito \
+products, but now require using the NonCommutativeMultiply (**) expression.  \
+For example\
+\>", "Text",
+ CellChangeTimes->{{3.4546957625737743`*^9, 3.454695830733768*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"QuantumItoDifferential", "[", 
+   RowBox[{"0", ",", 
+    OverscriptBox[
+     SuperscriptBox["L", "\[Dagger]"], "\[Wedge]"], ",", 
+    RowBox[{"-", 
+     OverscriptBox["L", "\[Wedge]"]}], ",", "0"}], "]"}], "**", 
+  RowBox[{"QuantumItoDifferential", "[", 
+   RowBox[{"0", ",", 
+    OverscriptBox[
+     SuperscriptBox["L", "\[Dagger]"], "\[Wedge]"], ",", 
+    RowBox[{"-", 
+     OverscriptBox["L", "\[Wedge]"]}], ",", "0"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.454695804192335*^9, 3.454695810150618*^9}, {
+  3.454757720765388*^9, 3.4547577237207003`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     OverscriptBox[
+      SuperscriptBox["L", "\[Dagger]"], "\[Wedge]"], "**", 
+     OverscriptBox["L", "\[Wedge]"]}]}], "\[CenterDot]", "dt"}], " ", "+", 
+  " ", 
+  RowBox[{"0", "\[CenterDot]", 
+   SubscriptBox["dA", "t"]}], "+", " ", 
+  RowBox[{"0", "\[CenterDot]", 
+   SubscriptBox[
+    SuperscriptBox["dA", "\[Dagger]"], "t"]}], "+", " ", 
+  RowBox[{"0", "\[CenterDot]", 
+   SubscriptBox["d\[CapitalLambda]", "t"]}]}]], "Output",
+ CellChangeTimes->{3.454756617250566*^9, 3.454756729611805*^9, 
+  3.4547577244846573`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "The QuantumItoDifferential functions also support a multi-mode form, in \
+which the ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["A", "t"], "and", " ", 
+    SubsuperscriptBox["A", "t", "\[Dagger]"], " ", "coefficients", " ", "are",
+     " ", "vectors", " ", "of", " ", "QuantumOperators", " ", "and", " ", 
+    "the", " ", 
+    SubscriptBox["\[CapitalLambda]", "t"], " ", "coefficient", " ", "is", " ",
+     "a", " ", "matrix", " ", "of", " ", 
+    RowBox[{"operators", ".", " ", "The"}], " ", "corresponding", "  ", "Ito",
+     " ", "product", " ", "rules", " ", "are", " ", "defined", " ", "using", 
+    " ", "the", " ", "multimode", " ", 
+    RowBox[{"definitions", ".", "  "}]}], TraditionalForm]]]
+}], "Text",
+ CellChangeTimes->{{3.454695838002041*^9, 3.454695941844406*^9}, {
+  3.454695980067684*^9, 3.454695984531419*^9}, {3.454696028200962*^9, 
+  3.454696062158434*^9}, {3.4547577347519217`*^9, 3.4547577357289248`*^9}},
+ FontSize->14]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Quantum Ito Product Rule", "Subsubsection",
+ CellChangeTimes->{{3.454696085461381*^9, 3.454696088553631*^9}}],
+
+Cell["\<\
+The QuantumItoProductRule is the straightforward generalization of the \
+classical ItoProductRule function.  For example, this can be done to verify \
+the unitarity of an propagator.  The only non-trivial part is that there is \
+no easy way to take the \[Dagger] of terms (at least none that I know of), so \
+I do it by hand\
+\>", "Text",
+ CellChangeTimes->{{3.454696092001178*^9, 3.454696202359819*^9}},
+ FontSize->14],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"dU", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"QuantumItoDifferential", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "I"}], "*", 
+       OverscriptBox["H", "\[Wedge]"]}], "-", 
+      RowBox[{
+       RowBox[{"1", "/", "2"}], "*", 
+       RowBox[{
+        OverscriptBox[
+         SuperscriptBox["L", "\[Dagger]"], "\[Wedge]"], "**", 
+        OverscriptBox["L", "\[Wedge]"]}]}]}], ",", 
+     RowBox[{"-", 
+      OverscriptBox[
+       SuperscriptBox["L", "\[Dagger]"], "\[Wedge]"]}], ",", 
+     OverscriptBox["L", "\[Wedge]"], ",", "0"}], "]"}], "**", 
+   RowBox[{"QuantumOperator", "[", "U", "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SuperscriptBox["dU", "\[Dagger]"], "=", 
+  RowBox[{
+   RowBox[{"QuantumOperator", "[", 
+    SuperscriptBox["U", "\[Dagger]"], "]"}], "**", 
+   RowBox[{"QuantumItoDifferential", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"I", "*", 
+       OverscriptBox["H", "\[Wedge]"]}], "-", 
+      RowBox[{
+       RowBox[{"1", "/", "2"}], "*", 
+       RowBox[{
+        OverscriptBox[
+         SuperscriptBox["L", "\[Dagger]"], "\[Wedge]"], "**", 
+        OverscriptBox["L", "\[Wedge]"]}]}]}], ",", 
+     OverscriptBox[
+      SuperscriptBox["L", "\[Dagger]"], "\[Wedge]"], ",", 
+     RowBox[{"-", 
+      OverscriptBox["L", "\[Wedge]"]}], ",", "0"}], "]"}]}]}]}], "Input",
+ CellChangeTimes->{{3.4546962033562593`*^9, 3.454696268624073*^9}, {
+  3.4546963913650427`*^9, 3.454696394244767*^9}, {3.454756735882596*^9, 
+  3.454756780779579*^9}, {3.454756835073824*^9, 3.454756860882065*^9}, {
+  3.4547570360725327`*^9, 3.454757064062832*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "\[ImaginaryI]"}], " ", 
+      RowBox[{
+       OverscriptBox["H", "\[Wedge]"], "**", 
+       OverscriptBox["U", "\[Wedge]"]}]}], "-", 
+     RowBox[{
+      FractionBox["1", "2"], " ", 
+      RowBox[{
+       OverscriptBox[
+        SuperscriptBox["L", "\[Dagger]"], "\[Wedge]"], "**", 
+       OverscriptBox["L", "\[Wedge]"], "**", 
+       OverscriptBox["U", "\[Wedge]"]}]}]}], ")"}], "\[CenterDot]", "dt"}], 
+  " ", "+", " ", 
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     OverscriptBox[
+      SuperscriptBox["L", "\[Dagger]"], "\[Wedge]"], "**", 
+     OverscriptBox["U", "\[Wedge]"]}]}], "\[CenterDot]", 
+   SubscriptBox["dA", "t"]}], "+", " ", 
+  RowBox[{
+   RowBox[{
+    OverscriptBox["L", "\[Wedge]"], "**", 
+    OverscriptBox["U", "\[Wedge]"]}], "\[CenterDot]", 
+   SubscriptBox[
+    SuperscriptBox["dA", "\[Dagger]"], "t"]}], "+", " ", 
+  RowBox[{"0", "\[CenterDot]", 
+   SubscriptBox["d\[CapitalLambda]", "t"]}]}]], "Output",
+ CellChangeTimes->{{3.4547567593263063`*^9, 3.454756781793339*^9}, {
+  3.454756842772428*^9, 3.454756866590599*^9}, {3.454757071275939*^9, 
+  3.45475707322493*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"\[ImaginaryI]", " ", 
+      RowBox[{
+       OverscriptBox[
+        SuperscriptBox["U", "\[Dagger]"], "\[Wedge]"], "**", 
+       OverscriptBox["H", "\[Wedge]"]}]}], "-", 
+     RowBox[{
+      FractionBox["1", "2"], " ", 
+      RowBox[{
+       OverscriptBox[
+        SuperscriptBox["U", "\[Dagger]"], "\[Wedge]"], "**", 
+       OverscriptBox[
+        SuperscriptBox["L", "\[Dagger]"], "\[Wedge]"], "**", 
+       OverscriptBox["L", "\[Wedge]"]}]}]}], ")"}], "\[CenterDot]", "dt"}], 
+  " ", "+", " ", 
+  RowBox[{
+   RowBox[{
+    OverscriptBox[
+     SuperscriptBox["U", "\[Dagger]"], "\[Wedge]"], "**", 
+    OverscriptBox[
+     SuperscriptBox["L", "\[Dagger]"], "\[Wedge]"]}], "\[CenterDot]", 
+   SubscriptBox["dA", "t"]}], "+", " ", 
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     OverscriptBox[
+      SuperscriptBox["U", "\[Dagger]"], "\[Wedge]"], "**", 
+     OverscriptBox["L", "\[Wedge]"]}]}], "\[CenterDot]", 
+   SubscriptBox[
+    SuperscriptBox["dA", "\[Dagger]"], "t"]}], "+", " ", 
+  RowBox[{"0", "\[CenterDot]", 
+   SubscriptBox["d\[CapitalLambda]", "t"]}]}]], "Output",
+ CellChangeTimes->{{3.4547567593263063`*^9, 3.454756781793339*^9}, {
+  3.454756842772428*^9, 3.454756866590599*^9}, {3.454757071275939*^9, 
+  3.454757073237191*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"QuantumItoProductRule", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"QuantumOperator", "[", "U", "]"}], ",", 
+      RowBox[{"QuantumOperator", "[", 
+       SuperscriptBox["U", "\[Dagger]"], "]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"dU", ",", 
+      SuperscriptBox["dU", "\[Dagger]"]}], "}"}]}], "]"}], "/.", 
+  RowBox[{"{", " ", 
+   RowBox[{
+    RowBox[{
+     OverscriptBox["U", "\[Wedge]"], "**", 
+     OverscriptBox[
+      SuperscriptBox["U", "\[Dagger]"], "\[Wedge]"]}], ":>", 
+    OverscriptBox["1", "\[Wedge]"]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.454696271919771*^9, 3.454696307903165*^9}, {
+  3.454696346358445*^9, 3.454696372379838*^9}, {3.4547569166692944`*^9, 
+  3.4547570066901207`*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{{3.454757003709895*^9, 3.454757007003706*^9}, 
+   3.454757075004426*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{640, 652},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+ShowSelection->True,
+InputAliases->{"intt" -> RowBox[{"\[Integral]", 
+     RowBox[{"\[SelectionPlaceholder]", 
+       RowBox[{"\[DifferentialD]", "\[Placeholder]"}]}]}], "dintt" -> 
+  RowBox[{
+     SubsuperscriptBox[
+     "\[Integral]", "\[SelectionPlaceholder]", "\[Placeholder]"], 
+     RowBox[{"\[Placeholder]", 
+       RowBox[{"\[DifferentialD]", "\[Placeholder]"}]}]}], "sumt" -> RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"\[SelectionPlaceholder]", "=", "\[Placeholder]"}], 
+      "\[Placeholder]"], "\[Placeholder]"}], "prodt" -> RowBox[{
+     UnderoverscriptBox["\[Product]", 
+      RowBox[{"\[SelectionPlaceholder]", "=", "\[Placeholder]"}], 
+      "\[Placeholder]"], "\[Placeholder]"}], "dt" -> RowBox[{
+     SubscriptBox["\[PartialD]", "\[Placeholder]"], " ", 
+     "\[SelectionPlaceholder]"}], "notation" -> RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongLeftRightArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "notation>" -> 
+  RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongRightArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "notation<" -> 
+  RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongLeftArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "symb" -> 
+  RowBox[{"Symbolize", "[", 
+     TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], "]"}], 
+  "infixnotation" -> RowBox[{"InfixNotation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], ",", 
+       "\[Placeholder]"}], "]"}], "addia" -> RowBox[{"AddInputAlias", "[", 
+     RowBox[{"\"\[SelectionPlaceholder]\"", "\[Rule]", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "pattwraper" -> 
+  TagBox["\[SelectionPlaceholder]", "NotationPatternTag"], "madeboxeswraper" -> 
+  TagBox["\[SelectionPlaceholder]", "NotationMadeBoxesTag"], "op" -> 
+  OverscriptBox["\[Placeholder]", "\[Wedge]"], "qce" -> 
+  RowBox[{"\[Pi]", "[", "\[Placeholder]", "]"}], "qt" -> "\[CircleTimes]"},
+FrontEndVersion->"6.0 for Mac OS X x86 (32-bit) (April 20, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info3454735000-1966678"->{
+  Cell[16063, 504, 517, 8, 114, "Print",
+   CellTags->"Info3454735000-1966678"]},
+ "Info3454735001-4961732"->{
+  Cell[20643, 647, 341, 6, 95, "Print",
+   CellTags->"Info3454735001-4961732"]},
+ "Info3454735001-5536997"->{
+  Cell[21286, 666, 187, 4, 42, "Print",
+   CellTags->"Info3454735001-5536997"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info3454735000-1966678", 55840, 1749},
+ {"Info3454735001-4961732", 55951, 1752},
+ {"Info3454735001-5536997", 56061, 1755}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 136, 1, 67, "Section"],
+Cell[729, 26, 395, 11, 45, "Text"],
+Cell[CellGroupData[{
+Cell[1149, 41, 103, 1, 25, "Subsubsection"],
+Cell[1255, 44, 497, 13, 45, "Text"],
+Cell[1755, 59, 543, 9, 27, "Input"],
+Cell[2301, 70, 489, 13, 62, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2827, 88, 107, 1, 25, "Subsubsection"],
+Cell[2937, 91, 311, 10, 45, "Text"],
+Cell[3251, 103, 187, 3, 43, "Input"],
+Cell[3441, 108, 193, 3, 28, "Text"],
+Cell[CellGroupData[{
+Cell[3659, 115, 122, 2, 27, "Input"],
+Cell[3784, 119, 1631, 47, 75, "Print"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5452, 171, 126, 2, 27, "Input"],
+Cell[5581, 175, 3584, 104, 264, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9214, 285, 116, 1, 34, "Subsection"],
+Cell[9333, 288, 713, 10, 96, "Text"],
+Cell[CellGroupData[{
+Cell[10071, 302, 117, 1, 25, "Subsubsection"],
+Cell[10191, 305, 136, 2, 28, "Text"],
+Cell[CellGroupData[{
+Cell[10352, 311, 156, 3, 27, "Input"],
+Cell[10511, 316, 169, 4, 34, "Output"]
+}, Open  ]],
+Cell[10695, 323, 532, 13, 62, "Text"],
+Cell[11230, 338, 806, 15, 147, "Text"],
+Cell[CellGroupData[{
+Cell[12061, 357, 209, 6, 38, "Input"],
+Cell[12273, 365, 325, 11, 39, "Output"]
+}, Open  ]],
+Cell[12613, 379, 125, 2, 28, "Text"],
+Cell[CellGroupData[{
+Cell[12763, 385, 211, 6, 38, "Input"],
+Cell[12977, 393, 326, 11, 39, "Output"]
+}, Open  ]],
+Cell[13318, 407, 274, 6, 45, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13629, 418, 120, 1, 25, "Subsubsection"],
+Cell[13752, 421, 181, 4, 28, "Text"],
+Cell[CellGroupData[{
+Cell[13958, 429, 222, 6, 36, "Input"],
+Cell[14183, 437, 199, 6, 36, "Output"]
+}, Open  ]],
+Cell[14397, 446, 382, 9, 62, "Text"],
+Cell[CellGroupData[{
+Cell[14804, 459, 345, 10, 37, "Input"],
+Cell[15152, 471, 198, 6, 36, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15399, 483, 167, 2, 25, "Subsubsection"],
+Cell[15569, 487, 307, 8, 45, "Text"],
+Cell[CellGroupData[{
+Cell[15901, 499, 159, 3, 27, "Input"],
+Cell[16063, 504, 517, 8, 114, "Print",
+ CellTags->"Info3454735000-1966678"]
+}, Open  ]],
+Cell[16595, 515, 366, 9, 45, "Text"],
+Cell[CellGroupData[{
+Cell[16986, 528, 1039, 33, 96, "Input"],
+Cell[18028, 563, 1487, 48, 40, "Output"]
+}, Open  ]],
+Cell[19530, 614, 760, 20, 68, "Text"],
+Cell[20293, 636, 162, 2, 28, "Text"],
+Cell[CellGroupData[{
+Cell[20480, 642, 160, 3, 27, "Input"],
+Cell[20643, 647, 341, 6, 95, "Print",
+ CellTags->"Info3454735001-4961732"]
+}, Open  ]],
+Cell[20999, 656, 127, 2, 28, "Text"],
+Cell[CellGroupData[{
+Cell[21151, 662, 132, 2, 27, "Input"],
+Cell[21286, 666, 187, 4, 42, "Print",
+ CellTags->"Info3454735001-5536997"]
+}, Open  ]],
+Cell[21488, 673, 134, 2, 28, "Text"],
+Cell[CellGroupData[{
+Cell[21647, 679, 134, 2, 27, "Input"],
+Cell[21784, 683, 1839, 59, 69, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23672, 748, 143, 1, 25, "Subsubsection"],
+Cell[23818, 751, 303, 6, 62, "Text"],
+Cell[24124, 759, 260, 7, 27, "Input"],
+Cell[CellGroupData[{
+Cell[24409, 770, 402, 11, 40, "Input"],
+Cell[24814, 783, 759, 25, 36, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25610, 813, 144, 2, 27, "Input"],
+Cell[25757, 817, 142, 4, 36, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25948, 827, 132, 1, 25, "Subsubsection"],
+Cell[26083, 830, 327, 6, 62, "Text"],
+Cell[26413, 838, 315, 8, 41, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26765, 851, 119, 1, 25, "Subsubsection"],
+Cell[26887, 854, 177, 4, 28, "Text"],
+Cell[CellGroupData[{
+Cell[27089, 862, 294, 7, 40, "Input"],
+Cell[27386, 871, 188, 5, 34, "Output"]
+}, Open  ]],
+Cell[27589, 879, 645, 13, 113, "Text"],
+Cell[CellGroupData[{
+Cell[28259, 896, 391, 11, 43, "Input"],
+Cell[28653, 909, 246, 7, 34, "Output"]
+}, Open  ]],
+Cell[28914, 919, 364, 8, 62, "Text"],
+Cell[CellGroupData[{
+Cell[29303, 931, 795, 23, 43, "Input"],
+Cell[30101, 956, 414, 13, 40, "Output"]
+}, Open  ]],
+Cell[30530, 972, 106, 2, 28, "Text"],
+Cell[CellGroupData[{
+Cell[30661, 978, 146, 2, 27, "Input"],
+Cell[30810, 982, 274, 7, 35, "Output"]
+}, Open  ]],
+Cell[31099, 992, 249, 5, 45, "Text"],
+Cell[CellGroupData[{
+Cell[31373, 1001, 370, 10, 40, "Input"],
+Cell[31746, 1013, 386, 12, 40, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32181, 1031, 122, 1, 25, "Subsubsection"],
+Cell[32306, 1034, 207, 5, 45, "Text"],
+Cell[CellGroupData[{
+Cell[32538, 1043, 398, 11, 40, "Input"],
+Cell[32939, 1056, 375, 12, 40, "Output"]
+}, Open  ]],
+Cell[33329, 1071, 447, 9, 79, "Text"],
+Cell[CellGroupData[{
+Cell[33801, 1084, 265, 7, 40, "Input"],
+Cell[34069, 1093, 266, 7, 40, "Output"]
+}, Open  ]],
+Cell[34350, 1103, 280, 6, 45, "Text"],
+Cell[CellGroupData[{
+Cell[34655, 1113, 923, 26, 69, "Input"],
+Cell[35581, 1141, 286, 7, 41, "Output"]
+}, Open  ]],
+Cell[35882, 1151, 280, 7, 79, "Text"],
+Cell[CellGroupData[{
+Cell[36187, 1162, 479, 13, 40, "Input"],
+Cell[36669, 1177, 429, 13, 40, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37159, 1197, 111, 1, 34, "Subsection"],
+Cell[37273, 1200, 273, 6, 45, "Text"],
+Cell[CellGroupData[{
+Cell[37571, 1210, 107, 1, 25, "Subsubsection"],
+Cell[37681, 1213, 365, 10, 47, "Text"],
+Cell[CellGroupData[{
+Cell[38071, 1227, 202, 5, 27, "Input"],
+Cell[38276, 1234, 291, 8, 30, "Output"]
+}, Open  ]],
+Cell[38582, 1245, 672, 18, 66, "Text"],
+Cell[CellGroupData[{
+Cell[39279, 1267, 249, 6, 27, "Input"],
+Cell[39531, 1275, 241, 6, 27, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39821, 1287, 117, 1, 25, "Subsubsection"],
+Cell[39941, 1290, 1329, 31, 121, "Text"],
+Cell[CellGroupData[{
+Cell[41295, 1325, 417, 12, 43, "Input"],
+Cell[41715, 1339, 264, 7, 27, "Output"],
+Cell[41982, 1348, 290, 8, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42309, 1361, 356, 11, 27, "Input"],
+Cell[42668, 1374, 462, 14, 27, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43179, 1394, 102, 1, 25, "Subsubsection"],
+Cell[43284, 1397, 687, 17, 83, "Text"],
+Cell[CellGroupData[{
+Cell[43996, 1418, 425, 11, 44, "Input"],
+Cell[44424, 1431, 648, 19, 44, "Output"]
+}, Open  ]],
+Cell[45087, 1453, 273, 6, 45, "Text"],
+Cell[CellGroupData[{
+Cell[45385, 1463, 593, 15, 77, "Input"],
+Cell[45981, 1480, 589, 17, 38, "Output"]
+}, Open  ]],
+Cell[46585, 1500, 974, 20, 87, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47596, 1525, 115, 1, 25, "Subsubsection"],
+Cell[47714, 1528, 429, 8, 79, "Text"],
+Cell[CellGroupData[{
+Cell[48168, 1540, 1606, 43, 113, "Input"],
+Cell[49777, 1585, 1192, 35, 47, "Output"],
+Cell[50972, 1622, 1317, 38, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52326, 1665, 772, 21, 65, "Input"],
+Cell[53101, 1688, 120, 2, 27, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
